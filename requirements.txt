@@ -1,0 +1,10 @@
+# NIDAR RescueSwarm Core Dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+pymavlink>=2.4.40
+numpy>=1.24.0
+pillow>=9.5.0
+opencv-python>=4.8.0
+pyyaml>=6.0
+requests>=2.30.0

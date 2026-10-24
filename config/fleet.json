@@ -1,0 +1,146 @@
+{
+  "fleet": [
+    {
+      "id": "S1",
+      "role": "search",
+      "system_id": 1,
+      "instance_id": 0,
+      "mavlink_port": 14540,
+      "gcs_port": 14550,
+      "ros_namespace": "s1",
+      "initial_status": "standby",
+      "model": "x500_gimbal",
+      "camera": {
+        "image_width": 1920,
+        "image_height": 1080,
+        "hfov_deg": 84.0,
+        "mount_pitch_deg": -90.0,
+        "mount_roll_deg": 0.0,
+        "mount_yaw_deg": 0.0
+      }
+    },
+    {
+      "id": "S2",
+      "role": "search",
+      "system_id": 2,
+      "instance_id": 1,
+      "mavlink_port": 14541,
+      "gcs_port": 14551,
+      "ros_namespace": "s2",
+      "initial_status": "standby",
+      "model": "x500_gimbal",
+      "camera": {
+        "image_width": 1920,
+        "image_height": 1080,
+        "hfov_deg": 84.0,
+        "mount_pitch_deg": -90.0,
+        "mount_roll_deg": 0.0,
+        "mount_yaw_deg": 0.0
+      }
+    },
+    {
+      "id": "S3",
+      "role": "search",
+      "system_id": 3,
+      "instance_id": 2,
+      "mavlink_port": 14542,
+      "gcs_port": 14552,
+      "ros_namespace": "s3",
+      "initial_status": "standby",
+      "model": "x500_gimbal",
+      "camera": {
+        "image_width": 1920,
+        "image_height": 1080,
+        "hfov_deg": 84.0,
+        "mount_pitch_deg": -90.0,
+        "mount_roll_deg": 0.0,
+        "mount_yaw_deg": 0.0
+      }
+    },
+    {
+      "id": "D1",
+      "role": "delivery",
+      "system_id": 4,
+      "instance_id": 3,
+      "mavlink_port": 14543,
+      "gcs_port": 14553,
+      "ros_namespace": "d1",
+      "initial_status": "ready",
+      "model": "x500",
+      "payload": {
+        "max_capacity_grams": 500,
+        "kit_mass_grams": 200,
+        "verification_method": "simulated_timer"
+      }
+    },
+    {
+      "id": "D2",
+      "role": "delivery",
+      "system_id": 5,
+      "instance_id": 4,
+      "mavlink_port": 14544,
+      "gcs_port": 14554,
+      "ros_namespace": "d2",
+      "initial_status": "ready",
+      "model": "x500",
+      "payload": {
+        "max_capacity_grams": 500,
+        "kit_mass_grams": 200,
+        "verification_method": "simulated_timer"
+      }
+    },
+    {
+      "id": "D3",
+      "role": "delivery",
+      "system_id": 6,
+      "instance_id": 5,
+      "mavlink_port": 14545,
+      "gcs_port": 14555,
+      "ros_namespace": "d3",
+      "initial_status": "ready",
+      "model": "x500",
+      "payload": {
+        "max_capacity_grams": 500,
+        "kit_mass_grams": 200,
+        "verification_method": "simulated_timer"
+      }
+    }
+  ],
+  "mission": {
+    "max_duration_minutes": 30,
+    "fast_completion_target_minutes": 15,
+    "survivor_kit_mass_grams": 200,
+    "require_autonomous_payload_release": true,
+    "base_station": {
+      "latitude": 12.9710,
+      "longitude": 77.5935,
+      "altitude_msl_m": 920.0
+    },
+    "search_altitude_agl_m": 30.0,
+    "delivery_transit_altitude_agl_m": 25.0,
+    "delivery_drop_altitude_agl_m": 8.0
+  },
+  "association": {
+    "match_distance_threshold_m": 10.0,
+    "max_association_uncertainty_m": 20.0,
+    "min_distinct_separation_m": 3.0,
+    "intra_frame_iou_threshold": 0.3,
+    "max_tracklet_gap_s": 5.0
+  },
+  "safety": {
+    "min_separation_m": 6.0,
+    "heartbeat_timeout_s": 5.0,
+    "battery_warning_fraction": 0.30,
+    "battery_rtl_fraction": 0.20,
+    "battery_land_fraction": 0.10,
+    "geofence": {
+      "min_lat": 12.9700,
+      "min_lon": 77.5900,
+      "max_lat": 12.9750,
+      "max_lon": 77.5990,
+      "min_altitude_agl_m": 3.0,
+      "max_altitude_agl_m": 60.0
+    }
+  },
+  "note": "Validated six-drone fleet configuration for NIDAR RescueSwarm PX4 SITL, Gazebo, and ROS 2 autonomy integration."
+}

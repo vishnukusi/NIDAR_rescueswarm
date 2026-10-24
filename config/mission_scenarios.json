@@ -1,0 +1,49 @@
+{
+  "scenarios": [
+    {
+      "name": "nominal",
+      "description": "Nominal 6-drone mission simulation with 2 survivors detected and verified simulated deliveries.",
+      "fleet_roles": {
+        "S1": "search", "S2": "search", "S3": "search",
+        "D1": "delivery", "D2": "delivery", "D3": "delivery"
+      },
+      "initial_batteries": {
+        "S1": 1.0, "S2": 1.0, "S3": 1.0,
+        "D1": 0.85, "D2": 0.94, "D3": 0.78
+      },
+      "search_area": {
+        "min_lat": 12.9712, "min_lon": 77.5940,
+        "max_lat": 12.9736, "max_lon": 77.5976
+      },
+      "base_location": {
+        "latitude": 12.9710, "longitude": 77.5935, "altitude_m": 0.0
+      },
+      "max_duration_s": 300.0,
+      "dt_s": 1.0,
+      "seed": 42
+    },
+    {
+      "name": "no_survivors",
+      "description": "Patrol mission where perception returns 0 detections. No rescue tasks are fabricated.",
+      "fleet_roles": {
+        "S1": "search", "S2": "search", "S3": "search",
+        "D1": "delivery", "D2": "delivery", "D3": "delivery"
+      },
+      "initial_batteries": {
+        "S1": 1.0, "S2": 1.0, "S3": 1.0,
+        "D1": 0.85, "D2": 0.94, "D3": 0.78
+      },
+      "search_area": {
+        "min_lat": 12.9712, "min_lon": 77.5940,
+        "max_lat": 12.9736, "max_lon": 77.5976
+      },
+      "base_location": {
+        "latitude": 12.9710, "longitude": 77.5935, "altitude_m": 0.0
+      },
+      "max_duration_s": 60.0,
+      "dt_s": 1.0,
+      "seed": 42
+    }
+  ],
+  "note": "Software simulation scenario configurations. Coordinates and detections are synthetic."
+}

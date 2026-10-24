@@ -1,0 +1,24 @@
+# ==============================================================================
+# NIDAR RescueSwarm — ROS 2 Bridge & Autonomy Parameter Configuration
+# ==============================================================================
+
+mission_manager_node:
+  ros__parameters:
+    config_path: "config/fleet.json"
+    adapter_type: "px4_mavlink"  # "mock", "px4_ros2", or "px4_mavlink"
+    timeout_s: 300.0
+    loop_rate_hz: 5.0
+    preflight_timeout_s: 5.0
+
+simulated_delivery_node:
+  ros__parameters:
+    verification_mode: "proximity_and_hover"  # "proximity_and_hover", "timer_verified", "fail_first_then_retry"
+    drop_hover_duration_s: 2.0
+    arrival_radius_m: 2.5
+    target_delivery_alt_m: 5.0
+
+perception_bridge_node:
+  ros__parameters:
+    conf_threshold: 0.25
+    model_path: "assets/models/best.pt"
+    frame_rate_hz: 10.0

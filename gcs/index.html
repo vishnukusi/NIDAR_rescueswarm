@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIDAR RescueSwarm — Tactical Ground Control Station</title>
+  <meta name="description" content="Autonomous 6-Drone Multi-Agent Coordination GCS Dashboard for search and rescue operations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header Bar -->
+    <header class="top-nav">
+      <div class="brand">
+        <div class="brand-badge">NIDAR</div>
+        <div class="brand-title">
+          <h1>RescueSwarm GCS</h1>
+          <span class="subtitle">Autonomous 6-Drone Multi-Agent Coordination Engine</span>
+        </div>
+      </div>
+
+      <div class="mission-status-chip">
+        <div class="status-indicator live-pulse"></div>
+        <span class="status-label">MISSION STATE:</span>
+        <span class="status-val" id="mission-state-val">SEARCHING</span>
+      </div>
+
+      <div class="global-metrics">
+        <div class="metric-card">
+          <span class="metric-label">SURVIVORS</span>
+          <span class="metric-value" id="survivors-count">2</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">DELIVERIES</span>
+          <span class="metric-value text-accent" id="deliveries-count">1</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-label">SAFETY LEVEL</span>
+          <span class="metric-value text-success" id="safety-level-val">NOMINAL</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-layout">
+      <!-- Tactical Map Viewport -->
+      <section class="tactical-section glass-panel">
+        <div class="panel-header">
+          <div class="panel-title-group">
+            <span class="radar-dot"></span>
+            <h2>Tactical Radar & Geofence Map</h2>
+            <span class="panel-tag">WGS-84 NED Projection</span>
+          </div>
+          <div class="map-controls">
+            <button class="btn btn-sm" id="btn-toggle-sectors" title="Toggle Search Sectors">Sectors: ON</button>
+            <button class="btn btn-sm" id="btn-toggle-paths" title="Toggle Planned Tracks">Paths: ON</button>
+            <button class="btn btn-sm" id="btn-reset-view" title="Recenter View">Recenter</button>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="tactical-canvas"></canvas>
+          <div class="map-overlay-legend">
+            <div class="legend-item"><span class="legend-color s1"></span> S1 Search</div>
+            <div class="legend-item"><span class="legend-color s2"></span> S2 Search</div>
+            <div class="legend-item"><span class="legend-color s3"></span> S3 Search</div>
+            <div class="legend-item"><span class="legend-color delivery"></span> D1-D3 Delivery</div>
+            <div class="legend-item"><span class="legend-color survivor"></span> Survivor Target</div>
+          </div>
+        </div>
+
+        <!-- Simulation Control Bar -->
+        <div class="sim-control-bar">
+          <div class="sim-actions">
+            <button class="btn btn-primary" id="btn-play-pause">
+              <span id="play-icon">⏸</span> <span id="play-text">Pause Sim</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-step">Step +1s</button>
+            <button class="btn btn-secondary" id="btn-speed">Speed: 1x</button>
+            <button class="btn btn-secondary" id="btn-reset">Reset Mission</button>
+          </div>
+          <div class="sim-injection">
+            <button class="btn btn-accent" id="btn-inject-survivor">+ Detect Survivor</button>
+            <button class="btn btn-warning" id="btn-inject-battery">⚡ Battery Failsafe</button>
+            <button class="btn btn-danger" id="btn-emergency-rtl">🚨 Fleet RTL</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Side Sidebar Panels -->
+      <aside class="sidebar-section">
+        <!-- Fleet Telemetry Cards -->
+        <div class="fleet-panel glass-panel">
+          <div class="panel-header">
+            <h2>Swarm Fleet Telemetry (6 Vehicles)</h2>
+            <span class="panel-count">6 Online</span>
+          </div>
+
+          <div class="drone-cards-grid" id="drone-cards-container">
+            <!-- Dynamically populated drone cards -->
+          </div>
+        </div>
+
+        <!-- Task Allocation & Rescue Queue -->
+        <div class="tasks-panel glass-panel">
+          <div class="panel-header">
+            <h2>Rescue Task Queue & Verification</h2>
+            <span class="task-counter-pill" id="task-badge">2 Tracked</span>
+          </div>
+
+          <div class="task-table-wrapper">
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>Task ID</th>
+                  <th>Spotted By</th>
+                  <th>Location (Lat, Lon)</th>
+                  <th>Assigned</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="task-table-body">
+                <!-- Dynamically populated task rows -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Safety & System Log Feed -->
+        <div class="logs-panel glass-panel">
+          <div class="panel-header">
+            <h2>Safety Watchdog & Event Log</h2>
+            <button class="btn-text" id="btn-clear-logs">Clear</button>
+          </div>
+          <div class="terminal-log" id="terminal-log-feed">
+            <!-- Dynamically populated console logs -->
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

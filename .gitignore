@@ -1,0 +1,85 @@
+# ==============================================================================
+# NIDAR RescueSwarm — Comprehensive Git Ignore Configuration
+# ==============================================================================
+
+# 1. Python bytecode, virtual environments, and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+build/
+install/
+log/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.DS_Store
+Thumbs.db
+
+# 2. Model weights, checkpoints, and extracted model internals
+*.pt
+*.pth
+*.onnx
+*.engine
+*.tflite
+*.pkl
+*.pickle
+assets/models/best/
+**/models/best/
+datasets/
+runs/
+
+# 3. Video recordings, extracted frames, frame caches, and generated test visuals
+*.mp4
+*.avi
+*.mov
+*.mkv
+assets/extracted_frame_*.jpg
+assets/test_cache_frames/
+assets/*_annotated.jpg
+docs/Drone_project/final_head_target_result.jpg
+docs/Drone_project/test_detection_result.jpg
+docs/Drone_project/img_person_geo.jpg
+docs/Drone_project/person_images/
+
+# 4. Telemetry logs, datasets, and flight records
+*.csv
+*.log
+*.tlog
+*.tlog.raw
+*.parm
+*.rlog
+
+# 5. Machine-specific configurations and editor settings
+Ultralytics/
+.ultralytics/
+.vscode/
+docs/Drone_project/.vscode/
+.idea/
+
+# 6. ROS 2 workspace build artifacts
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+
+# 7. Runtime telemetry & temporary simulation artifacts
+gcs/live_telemetry.json
+gcs/live_telemetry.json.tmp
+.sitl_fleet.pids
+*.tmp
+
+# 8. Secrets, credentials, private keys, and local environment files
+.env
+*.env
+*.key
+*.pem
+*.token
+*.p12
+*.crt
+id_rsa
+id_ecdsa
+id_ed25519

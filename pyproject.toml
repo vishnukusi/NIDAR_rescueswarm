@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rescue-swarm-sim"
+version = "1.0.0"
+description = "NIDAR RescueSwarm — Autonomous Six-Drone Multi-Vehicle Search and Rescue Simulation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Proprietary"}
+authors = [
+    {name = "NIDAR RescueSwarm Team", email = "dev@nidar-rescueswarm.org"}
+]
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "ultralytics>=8.0.0",
+    "pymavlink>=2.4.40",
+    "numpy>=1.24.0",
+    "pillow>=9.5.0",
+    "opencv-python>=4.8.0",
+    "pyyaml>=6.0",
+    "requests>=2.30.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "flake8>=6.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
